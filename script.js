@@ -1,3 +1,9 @@
+const colors = [
+    "#00db12",
+    "#ff0000",
+    "#6e6e6e"      
+  ];
+
 if (checks()) {
 	createUI();
 }
@@ -132,6 +138,8 @@ function createUI() {
 	newDiv.style.margin = '20px';
 	mainDiv.insertBefore(newDiv, mainDiv.firstChild);
 	window.__PSZYSET__ = true;
+
+	ChangeButtonColorScript();
 }
 
 function handleClick(input, newDiv) {
@@ -391,4 +399,25 @@ function CSVToArray(strData, strDelimiter) {
 
 	// Return the parsed data.
 	return arrData;
+}
+
+function ChangeButtonColorScript(){
+	var eles = document.getElementsByClassName("sortable-number");
+
+	var counter = new Array(eles.length).fill(0);
+
+	for(var index=0; index<eles.length; index++)
+	{
+		eles[index].addEventListener('click', function(e){
+
+			var ele = e.currentTarget;
+			var i = parseInt(ele.innerText)-1;
+
+			ele.setAttribute(
+				'style',
+				`background-color: ${colors[counter[i]]} !important; border-color: ${colors[counter[i]]} !important;` );
+			counter[i] = (counter[i] + 1)%colors.length;
+			
+		})
+	}
 }
