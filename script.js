@@ -1,7 +1,8 @@
 const colors = [
     "#00db12",
     "#ff0000",
-    "#6e6e6e"      
+    "#6e6e6e",
+	"#428bca"    
   ];
 
 if (checks()) {
@@ -226,7 +227,15 @@ function PopulateInfo(result){
 	{
 		var stationId = prefList.childNodes[i].childNodes[0].getAttribute('spn');
 
-		if(dict[stationId]==undefined) continue;
+		if(dict[stationId]==undefined)
+		 {
+			prefList.childNodes[i].childNodes[2]
+			.setAttribute(
+				'style',
+				`background-color: red !important; border-color: red !important;` 
+			);
+			continue;
+		}
 
 		var station = result[dict[stationId]]
 		prefList.childNodes[i].childNodes[0].innerText = `${station[3]}, ${station[1]}, ${station[2]}, ₹${station[5]}, (${station[4]})`;
