@@ -428,9 +428,12 @@ function MakeEditsInName(){
 	
 	$('#sortable_nav > li').forEach((li, index) => 
 	{
-		li.addEventListener('dblclick', function(){
-			var info = prompt("Add additional info here","");
-			li.querySelector(".spanclass").innerHTML += (','+info);
+		li
+		.querySelector(".spanclass")
+		.addEventListener('dblclick', function(){
+			var info = prompt("Add additional info here", "");
+			if( info!=null )
+				li.querySelector(".spanclass").innerHTML += (','+info);
 		})
 	});
 }
