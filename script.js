@@ -140,6 +140,7 @@ function createUI() {
 	window.__PSZYSET__ = true;
 
 	ChangeButtonColorScript();
+	MakeEditsInName();
 }
 
 function handleClick(input, newDiv) {
@@ -420,4 +421,16 @@ function ChangeButtonColorScript(){
 			
 		})
 	}
+}
+
+function MakeEditsInName(){
+
+	
+	$('#sortable_nav > li').forEach((li, index) => 
+	{
+		li.addEventListener('dblclick', function(){
+			var info = prompt("Add additional info here","");
+			li.querySelector(".spanclass").innerHTML += (','+info);
+		})
+	});
 }
